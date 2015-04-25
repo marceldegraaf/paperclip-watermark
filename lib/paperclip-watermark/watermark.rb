@@ -82,7 +82,7 @@ module Paperclip
     end
 
     def transformation_command
-      if @target_geometry.present?
+      if @target_geometry.present? && @target_geometry.to_s != ""
         scale, crop = @current_geometry.transformation_to(@target_geometry, crop?)
         trans = %W[-resize #{scale}]
         trans += %W[-crop #{crop} +repage] if crop
